@@ -1,9 +1,9 @@
 import sqlite3
 
 def userDb():
-    conn = sqlite3.connect('dashboard.sqlite')
+    conn = sqlite3.connect('db1.sqlite')
     return conn
 
 def sourceDb():
-    conn = sqlite3.connect('path/active_counts.sqlite')
+    conn = sqlite3.connect('db2.sqlite')
     return conn
