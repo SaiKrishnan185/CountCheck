@@ -6,7 +6,7 @@ from database import userDb, sourceDb
 
 application = Flask(__name__)
 
-@application.route("/saved", methods=["POST", "GET"])
+@application.route("/update", methods=["POST", "GET"])
 def saved():
     # Updating minimum values for counts
     if request.method == "POST":
@@ -30,7 +30,7 @@ def saved():
         return redirect(request.referrer)
 
 
-@application.route("/inventorymon/")
+@application.route("/monitor/")
 def dashboard():
     conn = sourceDb()
     updateT = conn.execute('select max(date) from source_date_counts;')
@@ -83,7 +83,7 @@ def dashboard():
     return render_template('inventorymon.html', a=source, b=updateT)
 
 
-@application.route("/inventorymon/status")
+@application.route("/monitor/status")
 def status(): 
     conn = sourceDb()
     cursor = conn.execute('select * from source_date_counts ORDER BY source;')
